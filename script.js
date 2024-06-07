@@ -2,28 +2,35 @@ const h2test = document.querySelector('h2');
 h2test.textContent = 'suck fat dick';
 
 /**
- * Player modules
- * @constructor player data which can be saved locally
+ * Player module
+ * @manager creates and manages all data related to player
  */
 const playerManager = (function() {
     const log = (message) => console.log(message);
-    const winCount = {};
-    const player = [];
-
-    const name = (name) => {
+    const winCount = {}; //should it be initialized here?
+    
+    /** @constructor to create the player */
+    const createPlayer = function(name) {
+        const player = [];
         player.name = name;
-        return name;
+        player.winCount = winCount;       
+
+        return { player };
     };
+
+    const gameSymbol = (symbol) => {
+        player.symbol = symbol;
+    };
+
     const winCounter = (player) => {
         log(`adding a win counter to ${player}`);
-        winCount.push(null);
+        player.winCount.push(null);
     };
 
     return {
-        name,
         winCounter,
-        winCount,
-        player,
+        createPlayer,
+        gameSymbol,
     };
 })();
 
