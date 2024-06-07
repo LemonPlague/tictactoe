@@ -18,7 +18,7 @@ const playerManager = (function() {
         return { player };
     };
 
-    const gameSymbol = (symbol) => {
+    const gameSymbol = (player, symbol) => {
         player.symbol = symbol;
     };
 
@@ -65,7 +65,16 @@ const gameBoard = (function() {
         8: 357,
     };
 
+    /** function to check winning combinations
+     * to the gameboard
+     */
+    function checkBoard(board, move) {
+        // insert logic to check the board for the latest move
+        // and then return all potential winning combinations
+    };
+
     return {
         createBoard,
+        checkBoard,
     };
 });
