@@ -7,7 +7,7 @@ h2test.textContent = 'suck fat dick';
  */
 const playerManager = (function() {
     const log = (message) => console.log(message);
-    const winCount = {}; //should it be initialized here?
+    const winCount = []; //should it be initialized here?
     
     /** @constructor to create the player */
     const createPlayer = function(name) {
@@ -15,7 +15,7 @@ const playerManager = (function() {
         player.name = name;
         player.winCount = winCount;       
 
-        return { player };
+        return player;
     };
 
     const gameSymbol = (player, symbol) => {
@@ -41,29 +41,23 @@ const playerManager = (function() {
 const gameBoard = (function() {
     
     const createBoard = () => {
-        const board = {
-            1: null,
-            2: null,
-            3: null,
-            4: null,
-            5: null,
-            6: null,
-            7: null,
-            8: null,
-            9: null,
-        };
-    };
+        const board = [null, null, null,
+            null, null, null,
+            null, null, null,
+        ];
 
-    const winningCombos = {
-        1: 123,
-        2: 456,
-        3: 789,
-        4: 147,
-        5: 258,
-        6: 369,
-        7: 159,
-        8: 357,
+        return board;
     };
+    const winningCombos = [
+        123,
+        456,
+        789,
+        147,
+        258,
+        369,
+        159,
+        357,
+    ];
 
     /** function to check winning combinations
      * to the gameboard
@@ -77,4 +71,4 @@ const gameBoard = (function() {
         createBoard,
         checkBoard,
     };
-});
+})();
