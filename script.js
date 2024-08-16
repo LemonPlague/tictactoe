@@ -23,7 +23,7 @@ const playerManager = (function() {
     };
 
     const winCounter = (player) => {
-        log(`adding a win counter to ${player}`);
+        log(`adding a win counter to ${player.name}`);
         player.winCount.push(null);
     };
 
@@ -47,6 +47,7 @@ const gameBoard = (function() {
         ];
 
         return board;
+        
     };
     const winningCombos = [
         123,
@@ -64,7 +65,10 @@ const gameBoard = (function() {
      */
     function checkBoard(board, move) {
         // insert logic to check the board for the latest move
-        // and then return all potential winning combinations
+        // and then return all potential winning combinations for specific symbol (based on whose turn it is)
+
+        // consider spitting out the position number where either "x" or "o"
+        // and check those positions against winningCombos.
     };
 
     return {
@@ -72,3 +76,5 @@ const gameBoard = (function() {
         checkBoard,
     };
 })();
+
+// CPU logic, start very simply. for example choosing just the next open position.
