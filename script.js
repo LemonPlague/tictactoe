@@ -1,5 +1,8 @@
+// ------------ DOM variables (placeholders) ------------
 const h2test = document.querySelector('h2');
-h2test.textContent = 'suck fat dick';
+h2test.textContent = 'testies';
+
+
 
 /**
  * Player module
@@ -33,6 +36,56 @@ const playerManager = (function() {
         gameSymbol,
     };
 })();
+
+
+playTheGame();
+
+
+
+// CPU logic, start very simply. for example choosing just the next open position.
+
+// ------------------- MAIN FUNCTIONS ---------------------
+function playTheGame() {
+
+    gatherPlayerInfo();
+
+    
+
+
+}
+
+// step 1: gather player info ---- THIS WORKS?
+function gatherPlayerInfo() {
+    const nameInput = prompt('enter your name');
+    const player1 = playerManager.createPlayer(nameInput);
+    const signInput = prompt('"x" or "o"?');
+    playerManager.gameSymbol(player1, signInput);    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Game board module
@@ -77,4 +130,3 @@ const gameBoard = (function() {
     };
 })();
 
-// CPU logic, start very simply. for example choosing just the next open position.
