@@ -3,7 +3,7 @@ const h2test = document.querySelector('h2');
 h2test.textContent = 'testies';
 
 
-
+// ------------ MODULES ------------
 /**
  * Player module
  * @manager creates and manages all data related to player
@@ -36,56 +36,6 @@ const playerManager = (function() {
         gameSymbol,
     };
 })();
-
-
-playTheGame();
-
-
-
-// CPU logic, start very simply. for example choosing just the next open position.
-
-// ------------------- MAIN FUNCTIONS ---------------------
-function playTheGame() {
-
-    gatherPlayerInfo();
-
-    
-
-
-}
-
-// step 1: gather player info ---- THIS WORKS?
-function gatherPlayerInfo() {
-    const nameInput = prompt('enter your name');
-    const player1 = playerManager.createPlayer(nameInput);
-    const signInput = prompt('"x" or "o"?');
-    playerManager.gameSymbol(player1, signInput);    
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Game board module
@@ -129,4 +79,60 @@ const gameBoard = (function() {
         checkBoard,
     };
 })();
+
+
+
+
+// START PROGRAM ON PAGE LOAD
+playTheGame();
+
+// ------------------- MAIN ---------------------
+function playTheGame() {
+
+    initialSetup();
+
+}
+
+
+// ------------------- MAIN FUNCTIONS -------------------
+// step 1: gather player info ---- THIS WORKS?
+function initialSetup() {
+    // gather player data
+    const nameInput = prompt('enter your name');
+    const player1 = playerManager.createPlayer(nameInput);
+    const signInput = prompt('"x" or "o"?');
+    playerManager.gameSymbol(player1, signInput);
+    
+    // setup the board
+    const newBoard = gameBoard.createBoard;
+};
+
+function checkBoard() {
+
+}
+
+
+
+// CPU logic, start very simply. for example choosing just the next open position.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
