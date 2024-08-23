@@ -2,10 +2,9 @@
 const h2test = document.querySelector('h2');
 h2test.textContent = 'testies';
 
-
-// ------------ MODULES ------------
+// ------------ INITIAL VARIABLES/MODULES ------------
 /**
- * Player module
+ * ------- Player module -------
  * @manager creates and manages all data related to player
  */
 const playerManager = (function() {
@@ -37,11 +36,14 @@ const playerManager = (function() {
     };
 })();
 
+
 /**
- * Game board module
+ * ------- Game board module -------
  * @constructor create & manage game board
  */
 const gameBoard = (function() {
+
+    let gameCount = 0;
     
     const createBoard = () => {
         const board = [null, null, null,
@@ -49,18 +51,30 @@ const gameBoard = (function() {
             null, null, null,
         ];
 
-        return board;
-        
+        return board;        
     };
+
+    const xPositions = [
+        null, null, null,
+        null, null, null,
+        null, null, null
+    ]
+
+    const oPositions = [
+        null, null, null,
+        null, null, null,
+        null, null, null
+    ]
+
     const winningCombos = [
-        123,
-        456,
-        789,
-        147,
-        258,
-        369,
-        159,
-        357,
+        '012',
+        '345',
+        '678',
+        '036',
+        '147',
+        '258',
+        '048',
+        '246',
     ];
 
     /** function to check winning combinations
@@ -74,9 +88,17 @@ const gameBoard = (function() {
         // and check those positions against winningCombos.
     };
 
+    let playerTurn = false;
+
+
     return {
         createBoard,
         checkBoard,
+        winningCombos,
+        xPositions,
+        oPositions,
+        gameCount,
+        playerTurn,
     };
 })();
 
@@ -104,13 +126,25 @@ function initialSetup() {
     playerManager.gameSymbol(player1, signInput);
     
     // setup the board
+    gameBoard.gameCount++;
     const newBoard = gameBoard.createBoard;
+    gameBoard.playerTurn = true;
 };
 
-function checkBoard() {
+// function checkBoard() {
 
-}
+// }
 
+function initiatePlayersTurn() {
+    const positionInput = prompt('choose a square to play, between 1-9');
+    if (player1.symbol == 'x') {
+        gameBoard.xPositions[positionInput] = 'x';
+        newBoard[positionInput] = 'x';
+    } else {
+        gameBoard.oPositions[positionInput] = 'o';
+        newBoard[positionInput] = 'o';
+    };
+};
 
 
 // CPU logic, start very simply. for example choosing just the next open position.
